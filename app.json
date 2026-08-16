@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "HabitFlow",
+    "slug": "habitflow",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "backgroundColor": "#1e293b"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.habitflow.app"
+    },
+    "android": {
+      "package": "com.habitflow.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#1e293b"
+      }
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}
