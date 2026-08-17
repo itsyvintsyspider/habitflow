@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -13,12 +13,23 @@ import { lastNDays, isToday } from "../services/dateUtils";
 import { getTheme } from "../theme";
 
 const HISTORY_DAYS = 35; // 5 weeks strip
+const CELLS_PER_ROW = 7;
+const CELL_MARGIN = 4;
 
 export default function HabitDetailScreen({ route, navigation }) {
   const { habitId } = route.params;
   const { settings } = useSettings();
   const { habits, toggleCompletion, deleteHabit, getHabitStats } = useHabits();
   const theme = getTheme(settings.darkMode);
+  const [gridWidth, setGridWidth] = useState(0);
+
+  // aspectRatio + percentage width doesn't reliably resolve cell height on
+  // native Yoga inside a flexWrap row (it renders fine on react-native-web,
+  // which uses the browser's CSS aspect-ratio, but collapses every row to
+  // near-zero height on Android/iOS). Measure the grid's actual width and
+  // compute square cells in points instead.
+  const cellSize =
+    gridWidth > 0 ? (gridWidth - CELL_MARGIN * 2 * CELLS_PER_ROW) / CELLS_PER_ROW : 0;
 
   const habit = habits.find((h) => h.id === habitId);
 
@@ -95,7 +106,10 @@ export default function HabitDetailScreen({ route, navigation }) {
       <Text style={[styles.sectionTitle, { color: theme.text }]}>
         Last {HISTORY_DAYS} Days
       </Text>
-      <View style={styles.grid}>
+      <View
+        style={styles.grid}
+        onLayout={(e) => setGridWidth(e.nativeEvent.layout.width)}
+      >
         {days.map((day) => {
           const done = completedSet.has(day);
           return (
@@ -104,6 +118,8 @@ export default function HabitDetailScreen({ route, navigation }) {
               style={[
                 styles.dayCell,
                 {
+                  width: cellSize,
+                  height: cellSize,
                   backgroundColor: done ? habit.color : theme.checkboxEmpty,
                   borderWidth: isToday(day) ? 2 : 0,
                   borderColor: theme.accent,
@@ -157,10 +173,8 @@ const styles = StyleSheet.create({
   sectionTitle: { fontSize: 16, fontWeight: "700", marginBottom: 12 },
   grid: { flexDirection: "row", flexWrap: "wrap" },
   dayCell: {
-    width: "13.14%",
-    aspectRatio: 1,
     borderRadius: 4,
-    margin: "0.57%",
+    margin: CELL_MARGIN,
   },
   gridHint: { fontSize: 12, marginTop: 10 },
   deleteButton: {
