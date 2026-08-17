@@ -74,7 +74,7 @@ export default function AddHabitScreen({ navigation }) {
             style={[
               styles.colorOption,
               { backgroundColor: c },
-              color === c && styles.colorSelected,
+              color === c && [styles.colorSelected, { borderColor: theme.text }],
             ]}
             onPress={() => setColor(c)}
           />
@@ -131,7 +131,6 @@ const styles = StyleSheet.create({
   },
   colorSelected: {
     borderWidth: 3,
-    borderColor: "#0f172a",
   },
   previewCard: {
     flexDirection: "row",
