@@ -8,10 +8,12 @@ import {
   Alert,
 } from "react-native";
 import { useSettings } from "../context/SettingsContext";
+import { useHabits } from "../context/HabitsContext";
 import { getTheme } from "../theme";
 
 export default function SettingsScreen() {
   const { settings, toggleDarkMode, resetAllData } = useSettings();
+  const { resetHabits } = useHabits();
   const theme = getTheme(settings.darkMode);
 
   const handleClearData = () => {
@@ -20,7 +22,14 @@ export default function SettingsScreen() {
       "This will delete all habits and their history. This cannot be undone.",
       [
         { text: "Cancel", style: "cancel" },
-        { text: "Clear", style: "destructive", onPress: resetAllData },
+        {
+          text: "Clear",
+          style: "destructive",
+          onPress: () => {
+            resetAllData();
+            resetHabits();
+          },
+        },
       ]
     );
   };

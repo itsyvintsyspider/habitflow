@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
   sectionTitle: { fontSize: 16, fontWeight: "700", marginBottom: 12 },
   grid: { flexDirection: "row", flexWrap: "wrap" },
   dayCell: {
-    width: "12%",
+    width: "13.14%",
     aspectRatio: 1,
     borderRadius: 4,
     margin: "0.57%",

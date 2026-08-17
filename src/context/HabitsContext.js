@@ -83,6 +83,10 @@ export function HabitsProvider({ children }) {
     };
   }, []);
 
+  const resetHabits = useCallback(() => {
+    setHabits([]);
+  }, []);
+
   const activeHabits = habits.filter((h) => !h.archived);
 
   return (
@@ -96,6 +100,7 @@ export function HabitsProvider({ children }) {
         deleteHabit,
         toggleCompletion,
         getHabitStats,
+        resetHabits,
       }}
     >
       {children}
