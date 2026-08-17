@@ -37,9 +37,9 @@ locally on the device.
 | --- | --- | --- |
 | ![Today screen](screenshots/today.png) | ![Habits list](screenshots/habits.png) | ![Add Habit form](screenshots/add-habit.png) |
 
-| Habit Detail | Settings (dark) | Settings (light) |
-| --- | --- | --- |
-| ![Habit detail screen](screenshots/habit-detail.png) | ![Settings screen, dark mode](screenshots/settings.png) | ![Settings screen, light mode](screenshots/settings-light.png) |
+| Settings (dark) | Settings (light) |
+| --- | --- |
+| ![Settings screen, dark mode](screenshots/settings.png) | ![Settings screen, light mode](screenshots/settings-light.png) |
 
 ## Technologies Used
 
