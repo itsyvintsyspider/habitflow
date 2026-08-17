@@ -4,10 +4,6 @@ A React Native (Expo) habit tracker built for the Mobile Applications module
 (UFCF7H-15-3). Create habits, check them off daily, and track streaks over
 time — fully offline, no external API required.
 
-> This README is a working draft. Screenshots, the full feature list, and
-> known issues will be filled in before final submission per the assessment
-> brief's README requirements.
-
 ## Installation & Run Instructions
 
 1. Clone this repo and install dependencies:
@@ -30,9 +26,20 @@ locally on the device.
 - Check off habits for today from the Today screen
 - Automatic streak calculation (current streak + longest streak ever)
 - 35-day calendar strip per habit — tap any past day to toggle it
-- Edit/delete habits
+- Delete habits (with a confirmation prompt)
 - Dark mode
+- Clear all app data from Settings (with a confirmation prompt)
 - All data persists across app restarts (AsyncStorage)
+
+## Screenshots
+
+| Today | Habits | Add Habit |
+| --- | --- | --- |
+| ![Today screen](screenshots/today.png) | ![Habits list](screenshots/habits.png) | ![Add Habit form](screenshots/add-habit.png) |
+
+| Habit Detail | Settings |
+| --- | --- |
+| ![Habit detail screen](screenshots/habit-detail.png) | ![Settings screen](screenshots/settings.png) |
 
 ## Technologies Used
 
@@ -45,6 +52,8 @@ locally on the device.
 
 ## Known Issues / Future Improvements
 
+- No way to edit a habit's name, icon, or color after creation (only
+  delete-and-recreate)
 - No reminder/notification system yet
 - No habit reordering (drag-and-drop) yet
 - No automated tests yet
